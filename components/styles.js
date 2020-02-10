@@ -16,5 +16,14 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         color: "white",
         fontWeight: "bold"
+    },
+    active: {
+        width: "60%",
+        marginLeft: "20%",
+        marginTop: 30,
+        height: 40,
+        backgroundColor: 'green',
+        justifyContent: "center",
+        alignItems: "center"
     }
 })

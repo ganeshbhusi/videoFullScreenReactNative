@@ -18,7 +18,7 @@ class Tab2Page extends Component {
                 <TouchableOpacity>
                     <View style={styles.container}>
                         <Text style={styles.textOne}>
-                            Tab2Component1
+                            Study
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -26,7 +26,7 @@ class Tab2Page extends Component {
                 <TouchableOpacity>
                     <View style={styles.container}>
                         <Text style={styles.textOne}>
-                            Tab2Component2
+                            Classroom
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -34,7 +34,7 @@ class Tab2Page extends Component {
                 <TouchableOpacity>
                     <View style={styles.container}>
                         <Text style={styles.textOne}>
-                            Tab2Component3
+                            Tests
                         </Text>
                     </View>
                 </TouchableOpacity>

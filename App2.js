@@ -22,23 +22,83 @@ import Tab3Component3 from './components/tabs/Tab3Components/Tab3Component3';
 const TabNavigator = createBottomTabNavigator({
   Home: {
     screen: createStackNavigator({
-      Home: {
+      Tab1: {
         screen: Tab1Page
-      }
+      },
+      stacknavs1: createStackNavigator({
+        Tab1Comp1: {
+          screen: Tab1Component1,
+          navigationOptions: {
+            headerShown: false
+          }
+        },
+        Tab1Comp2: {
+          screen: Tab1Component2,
+          navigationOptions: {
+            headerShown: false
+          }
+        },
+        Tab1Comp3: {
+          screen: Tab1Component3,
+          navigationOptions: {
+            headerShown: false
+          }
+        }
+      })
     })
   },
   NewsFeed: {
     screen: createStackNavigator({
-      NewsFeed: {
+      Tab2: {
         screen: Tab2Page
-      }
+      },
+      stacknavs2: createStackNavigator({
+        Tab2Comp1: {
+          screen: Tab2Component1,
+          navigationOptions: {
+            headerShown: false
+          }
+        },
+        Tab2Comp2: {
+          screen: Tab2Component2,
+          navigationOptions: {
+            headerShown: false
+          }
+        },
+        Tab2Comp3: {
+          screen: Tab2Component3,
+          navigationOptions: {
+            headerShown: false
+          }
+        }
+      })
     })
   },
   Settings: {
     screen: createStackNavigator({
-      Settings: {
+      Tab3: {
         screen: Tab3Page
-      }
+      },
+      stacknavs3: createStackNavigator({
+        PageSettings: {
+          screen: Tab3Component1,
+          navigationOptions: {
+            headerShown: false
+          }
+        },
+        Profile: {
+          screen: Tab3Component2,
+          navigationOptions: {
+            headerShown: false
+          }
+        },
+        Logout: {
+          screen: Tab3Component3,
+          navigationOptions: {
+            headerShown: false
+          }
+        }
+      })
     })
   }
 });
@@ -49,63 +109,9 @@ const stackNav = createStackNavigator({
     navigationOptions: {
       headerShown: false
     }
-  },
-  PageSettings: {
-    screen: Tab3Component1,
-    navigationOptions: {
-      headerShown: true
-    }
-  },
-  Profile: {
-    screen: Tab3Component2,
-    navigationOptions: {
-      headerShown: true
-    }
-  },
-  Logout: {
-    screen: Tab3Component3,
-    navigationOptions: {
-      headerShown: true
-    }
-  },
-  Tab2Comp1: {
-    screen: Tab2Component1,
-    navigationOptions: {
-      headerShown: true
-    }
-  },
-  Tab2Comp2: {
-    screen: Tab2Component2,
-    navigationOptions: {
-      headerShown: true
-    }
-  },
-  Tab2Comp3: {
-    screen: Tab2Component3,
-    navigationOptions: {
-      headerShown: true
-    }
-  },
-  Tab1Comp1: {
-    screen: Tab1Component1,
-    navigationOptions: {
-      headerShown: true
-    }
-  },
-  Tab1Comp2: {
-    screen: Tab1Component2,
-    navigationOptions: {
-      headerShown: true
-    }
-  },
-  Tab1Comp3: {
-    screen: Tab1Component3,
-    navigationOptions: {
-      headerShown: true
-    }
   }
 })
 
 const tabsNav = createAppContainer(stackNav);
 
-export default tabsNav;
+// export default tabsNav;

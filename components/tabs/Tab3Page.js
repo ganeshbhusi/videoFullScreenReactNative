@@ -19,17 +19,17 @@ class Tab3Page extends Component {
                 <TouchableOpacity>
                     <View style={styles.container}>
                         <Text style={styles.textOne}>
-                            Tab3Component1
+                            Page Settings
                         </Text>
                     </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={()=>{
-                    navigate("Tab3Comp2")
+                    navigate("Profile")
                 }}>
-                    <View style={styles.container}>
+                    <View style={styles.container, styles.active}>
                         <Text style={styles.textOne}>
-                            Tab3Component2
+                            Profile
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -37,7 +37,7 @@ class Tab3Page extends Component {
                 <TouchableOpacity>
                     <View style={styles.container}>
                         <Text style={styles.textOne}>
-                            Tab3Component3
+                            Logout
                         </Text>
                     </View>
                 </TouchableOpacity>

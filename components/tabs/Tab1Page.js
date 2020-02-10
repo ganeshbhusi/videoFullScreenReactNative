@@ -17,11 +17,11 @@ class Tab1Page extends Component {
             <View>
 
                 <TouchableOpacity onPress={() => {
-                    navigate("Tab1Comp1")
+                    navigate("Profile")
                 }}>
-                    <View style={styles.container}>
+                    <View style={styles.container, styles.active}>
                         <Text style={styles.textOne}>
-                            Tab1Component1
+                            Open Profile
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -29,7 +29,7 @@ class Tab1Page extends Component {
                 <TouchableOpacity>
                     <View style={styles.container}>
                         <Text style={styles.textOne}>
-                            Tab1Component2
+                            My Courses
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -37,7 +37,7 @@ class Tab1Page extends Component {
                 <TouchableOpacity>
                     <View style={styles.container}>
                         <Text style={styles.textOne}>
-                            Tab1Component3
+                            Ask Doubts
                         </Text>
                     </View>
                 </TouchableOpacity>
