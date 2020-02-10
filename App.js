@@ -19,11 +19,27 @@ import Tab3Component1 from './components/tabs/Tab3Components/Tab3Component1';
 import Tab3Component2 from './components/tabs/Tab3Components/Tab3Component2';
 import Tab3Component3 from './components/tabs/Tab3Components/Tab3Component3';
 
-const TabNavigator = createBottomTabNavigator({
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+
+const materialBottomTabNav = createMaterialBottomTabNavigator({
   Home: {
     screen: createStackNavigator({
       Home: {
         screen: Tab1Page
+      }
+    }, {
+      navigationOptions: {
+        tabBarBadge: false,
+        tabBarLabel: "My Home",
+        // shifting: true,
+        activeColor: 'white',
+        inactiveColor: 'white',
+        tabBarColor: 'green',
+        barStyle: {
+          // paddingBottom: 20,
+          backgroundColor: 'blue',
+        }
       }
     })
   },
@@ -31,6 +47,21 @@ const TabNavigator = createBottomTabNavigator({
     screen: createStackNavigator({
       NewsFeed: {
         screen: Tab2Page
+      },
+      CheckComp: {
+        screen: Tab2Component2,
+        navigationOptions: {
+          headerShown: true
+        }
+      },
+    }, {
+      navigationOptions: {
+        tabBarBadge: false,
+        tabBarLabel: "News Feed",
+        // shifting: true,
+        activeColor: 'white',
+        inactiveColor: 'white',
+        tabBarColor: 'green'
       }
     })
   },
@@ -39,7 +70,88 @@ const TabNavigator = createBottomTabNavigator({
       Settings: {
         screen: Tab3Page
       }
+    }, {
+      navigationOptions: {
+        tabBarBadge: false,
+        tabBarLabel: "Settings",
+        // shifting: true,
+        activeColor: 'white',
+        inactiveColor: 'white',
+        tabBarColor: 'green'
+      }
     })
+  }
+})
+
+const TabNavigator = createBottomTabNavigator({
+  Home: {
+    screen: createStackNavigator({
+      Home: {
+        screen: Tab1Page,
+        navigationOptions: {
+          title: "Dashboard"
+        }
+      }
+    }, {
+      navigationOptions: {
+        title: "Home",
+        activeTintColor: 'white',
+        inactiveTintColor: 'black',
+        tabBarIcon: ({tintColor}) =>
+          (
+            <Icon name="home" size={18} color={tintColor} />
+          )
+      }
+    })
+  },
+  NewsFeed: {
+    screen: createStackNavigator({
+      NewsFeed: {
+        screen: Tab2Page,
+      },
+      CheckComp: {
+        screen: Tab2Component2,
+        navigationOptions: {
+          headerShown: true
+        }
+      },
+    }, {
+      navigationOptions: {
+        title: "News Feed",
+        tabBarIcon: ({tintColor}) => (
+          <Icon name="rss" size={18} color={tintColor} />
+        )
+      }
+    })
+  },
+  Settings: {
+    screen: createStackNavigator({
+      Settings: {
+        screen: Tab3Page
+      }
+    }, {
+      navigationOptions: {
+        title: "Settings",
+        tabBarIcon: ({tintColor}) => (
+          <Icon name="cog" size={18} color={tintColor} />
+        )
+      }
+    })
+  }
+}, {
+  tabBarOptions: {
+    showIcon: true,
+    activeTintColor: 'blue',
+    inactiveTintColor: 'black',
+    activeBackgroundColor: '#ccccff',
+    inactiveBackgroundColor: "#ccccdd",
+    labelStyle: {
+      fontWeight: 'bold',
+      fontSize: 12
+    },
+    tabBarIcon: {
+      tintColor: 'blue'
+    }
   }
 });
 
@@ -47,7 +159,7 @@ const stackNav = createStackNavigator({
   Home: {
     screen: TabNavigator,
     navigationOptions: {
-      headerShown: false
+      headerShown: false,
     }
   },
   PageSettings: {

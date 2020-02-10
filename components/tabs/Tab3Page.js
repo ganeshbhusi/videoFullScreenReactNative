@@ -16,7 +16,9 @@ class Tab3Page extends Component {
         return (
             <View>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigate("CheckComp")
+                }}>
                     <View style={styles.container}>
                         <Text style={styles.textOne}>
                             Page Settings

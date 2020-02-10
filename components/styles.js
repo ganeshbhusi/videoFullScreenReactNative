@@ -25,5 +25,14 @@ export const styles = StyleSheet.create({
         backgroundColor: 'green',
         justifyContent: "center",
         alignItems: "center"
+    },
+    active2: {
+        width: "60%",
+        marginLeft: "20%",
+        marginTop: 30,
+        height: 40,
+        backgroundColor: 'indigo',
+        justifyContent: "center",
+        alignItems: "center"
     }
 })
