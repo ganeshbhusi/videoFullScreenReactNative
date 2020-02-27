@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, View, Text, Image, TouchableOpacity, StyleSheet, Keyboard, ScrollView, TextInput, ImageBackground, ToastAndroid } from 'react-native';
-import { styles } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import VideoFullScreenModal from './VideoFullScreenModal';
 import Orientation from 'react-native-orientation-locker';
@@ -22,14 +21,14 @@ const CourseDataImage = (props) => {
         setShowModal(false)
     }
     return (
-        <View style={{ width: 200, height: 100, paddingLeft: 10 }}>
+        <View style={styles.container}>
             <TouchableOpacity onPress={() => showToast(props.data.videoUrl)}>
                 {
                     checkImage && (
                         <ImageBackground
                             source={{ uri: props.data.videoThumbnail }}
-                            style={{ height: 100, justifyContent: 'center', alignItems: 'center' }}
-                            resizeMode={"contain"}
+                            style={ styles.imageStyle }
+                            resizeMode={"cover"}
                             accessibilityLabel="Welcome Image"
                             onError={(e) => { setCheckImage(false) }}
                         >
@@ -41,7 +40,7 @@ const CourseDataImage = (props) => {
                     !checkImage && (
                         <ImageBackground
                             source={{ uri: 'https://media.glassdoor.com/sqll/923744/vedantu-squarelogo-1561376805753.png' }}
-                            style={{ height: 100, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red' }}
+                            style={ styles.imageStyle }
                         >
                             <Icon name="play" size={30} style={{ color: '#0a00ff' }} />
                         </ImageBackground>
@@ -58,5 +57,19 @@ const CourseDataImage = (props) => {
 
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        width: 272,
+        height: 146,
+        marginRight: 10,
+        backgroundColor: "#d8d8d8"
+    },
+    imageStyle: {
+        height: 146,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})
 
 export default CourseDataImage;

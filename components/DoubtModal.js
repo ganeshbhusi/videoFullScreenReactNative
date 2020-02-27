@@ -4,10 +4,27 @@ import { Modal, View, Text, TouchableOpacity, StyleSheet, Keyboard, ScrollView, 
 const DoubtModal = (props) => {
     const { isVisible, onCloseModal, getStudentDoubtText } = props;
 
-    const [inputVal, setInputVal] = useState("Testing Data")
+    const [emailAddress, setEmailAddress] = useState("")
+    const [question, setQuestion] = useState("")
+    const [requiredEmail, setRequiredEmail] = useState(false);
+    const [requiredQuestion, setRequiredQuestion] = useState(false)
 
     sendDataBack = () => {
-        getStudentDoubtText(inputVal)
+        if(emailAddress===""){
+            setRequiredEmail(true)
+            return
+        }else{
+            setRequiredEmail(false)
+        }
+        
+        if(question===""){
+            setRequiredQuestion(true)
+            return
+        }else{
+            setRequiredQuestion(false)
+        }
+
+        getStudentDoubtText(emailAddress, question)
     }
 
     return (
@@ -39,20 +56,46 @@ const DoubtModal = (props) => {
                                 Have a question?
                             </Text>
                         </View>
+
+                        <View style={styles.questionPost1}>
+                            <Text style={styles.questionPost}>
+                                Email address
+                            </Text>
+                        </View>
+                        <TextInput
+                            value={emailAddress}
+                            onChangeText={value => setEmailAddress(value)}
+                            placeholder="eg. xyz@abc.om"
+                            style={styles.textInputTwo}
+                        />
+                        <Text>
+                            {
+                                requiredEmail && (
+                                    <Text style={styles.requiredThings}>Required!!!</Text>
+                                )
+                            }
+                        </Text>
+
                         <View style={styles.questionPost1}>
                             <Text style={styles.questionPost}>
                                 Post your question
                             </Text>
                         </View>
-
                         <TextInput
                             multiline={true}
                             numberOfLines={5}
-                            value={inputVal}
-                            onChangeText={value => setInputVal(value)}
+                            value={question}
+                            onChangeText={value => setQuestion(value)}
                             placeholder="Type here.."
                             style={styles.textInputOne}
                         />
+                        <Text>
+                            {
+                                requiredQuestion && (
+                                    <Text style={styles.requiredThings}>Required!!!</Text>
+                                )
+                            }
+                        </Text>
 
                         <TouchableOpacity onPress={
                             sendDataBack
@@ -85,6 +128,7 @@ const styles = StyleSheet.create({
         padding: 20
     },
     questionText: {
+        fontFamily: 'sans-serif',
         fontSize: 20,
         lineHeight: 28,
         color: "#222222",
@@ -105,12 +149,23 @@ const styles = StyleSheet.create({
     textInputOne: {
         borderColor: '#cccccc',
         backgroundColor: 'white',
-        borderWidth: 1,
+        borderColor: '#e8ebe9',
+        borderWidth: 3,
+        borderRadius: 5,
         padding: 10,
         textAlignVertical: 'top'
     },
+    textInputTwo: {
+        borderColor: '#e8ebe9',
+        backgroundColor: 'white',
+        borderWidth: 3,
+        borderRadius: 5,
+        padding: 10,
+        fontSize: 14
+        // padding: 10,
+        // textAlignVertical: 'top'
+    },
     submitView: {
-        marginTop: 5,
         alignItems: 'flex-end',
     },
     submitText: {
@@ -147,6 +202,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#ff6200',
         fontWeight: 'bold'
+    },
+    requiredThings: {
+        color: 'red'
     }
 })
 export default DoubtModal;

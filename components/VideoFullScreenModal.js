@@ -7,31 +7,17 @@ const { width, height } = Dimensions.get('window')
 
 const VideoFullScreenModal = (props) => {
     const { isVisible, onCloseModal, videoUrl } = props;
-
-    const [videoRef, setVideoRef] = useState("")
-
-    // useEffect(() => {
-    //     if (videoRef !== null && videoRef !== "") {
-    //         // videoRef.presentFullscreenPlayer()
-    //     }
-    // }, [videoRef])
-
-    useEffect(() => {
-        if (videoRef !== null && videoRef !== "") {
-            console.log("change orientation");
-            // Orientation.lockToLandscape();
-        }
-
-        return () => {
-            // Orientation.lockToPortrait()
-        }
-    }, [videoRef])
+    const [videoLoaded, setVideoLoaded] = useState(false);
+    if (!isVisible) {
+        return null
+    }
 
     return (
+
         <Modal
             animationType="fade"
             visible={isVisible}
-            transparent={false}
+            transparent={true}
             onRequestClose={
                 onCloseModal
             }
@@ -39,16 +25,16 @@ const VideoFullScreenModal = (props) => {
             <View style={styles.container}>
                 <Video
                     source={{ uri: videoUrl }}
-                    ref={(ref) => {
-                        setVideoRef(ref)
-                    }}
-                    controls={true}
-                    style={styles.video}
-                    resizeMode={"cover"}
-                    // fullscreen={true}
-                    // fullscreenOrientation={"portrait"}
-                    paused={false}
+                    controls
+                    style={{ flex: 1, width: Dimensions.get("window").width, zIndex: 9999 }}
+                    resizeMode={"contain"}
+                    // fullscreen={false}
+                    // fullscreenOrientation={"landscape"}
+                    // paused={false}
                     // fullscreenAutorotate={true}
+                    onLoad={() => {
+                        setVideoLoaded(true)
+                    }}
                     onEnd={() => {
                         ToastAndroid.show("Video Completed", ToastAndroid.SHORT)
                         onCloseModal()
@@ -67,19 +53,24 @@ const VideoFullScreenModal = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ebebeb',
+        justifyContent: 'center',
+        height: Dimensions.get("window").height,
+        backgroundColor: 'rgba(52, 52, 52, 0.4)',
+        zIndex: 0
         // transform: [{ rotate: '90deg' }],
-        // width: Dimensions.get('window').width,
-        // height: Dimensions.get('window').height,
     },
     video: {
         // flex: 1,
-        // width: Dimensions.get('window').height,
-        // height: Dimensions.get('window').width,
+        width: Dimensions.get('window').width,
         // minHeight: "100%",
-        width,
-        height: 300,
-        backgroundColor: 'black',
+        // width,
+        // height: 300,
+        backgroundColor: 'rgba(52, 52, 52, 0.4)',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
     }
 })
 
