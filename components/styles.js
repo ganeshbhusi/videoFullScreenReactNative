@@ -34,5 +34,14 @@ export const styles = StyleSheet.create({
         backgroundColor: 'indigo',
         justifyContent: "center",
         alignItems: "center"
+    },
+    imageContainerError: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 100,
+        backgroundColor: 'silver'
+    },
+    imageContainerErrorText: {
+        fontSize: 30
     }
 })

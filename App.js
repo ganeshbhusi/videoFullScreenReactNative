@@ -21,25 +21,34 @@ import Tab3Component3 from './components/tabs/Tab3Components/Tab3Component3';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import DoubtModal from './components/DoubtModal';
 
-const materialBottomTabNav = createMaterialBottomTabNavigator({
+const materialBottomTabNav = createMaterialTopTabNavigator({
   Home: {
     screen: createStackNavigator({
       Home: {
-        screen: Tab1Page
+        screen: Tab1Page,
+        navigationOptions: {
+          title: "Dashboard",
+          headerTitleStyle: {fontWeight: 'bold', color: 'blue'}
+        }
       }
     }, {
       navigationOptions: {
         tabBarBadge: false,
         tabBarLabel: "My Home",
-        // shifting: true,
-        activeColor: 'white',
-        inactiveColor: 'white',
+        swipeEnabled: true,
+        shifting: true,
         tabBarColor: 'green',
         barStyle: {
-          // paddingBottom: 20,
           backgroundColor: 'blue',
-        }
+        },
+        showIcon: true,
+        tabBarIcon: ({ tintColor }) =>
+          (
+            <Icon name="home" size={18} color={tintColor} />
+          )
       }
     })
   },
@@ -81,6 +90,22 @@ const materialBottomTabNav = createMaterialBottomTabNavigator({
       }
     })
   }
+}, {
+  tabBarPosition: "bottom",
+  tabBarOptions: {
+    labelStyle: {
+      fontSize: 12,
+      fontWeight: "bold",
+      textTransform: "capitalize",
+    },
+    tabStyle: {
+      borderBottomColor: "blue",
+      borderBottomWidth: 1
+    },
+    style: {
+      backgroundColor: 'blue'
+    },
+  }
 })
 
 const TabNavigator = createBottomTabNavigator({
@@ -97,7 +122,7 @@ const TabNavigator = createBottomTabNavigator({
         title: "Home",
         activeTintColor: 'white',
         inactiveTintColor: 'black',
-        tabBarIcon: ({tintColor}) =>
+        tabBarIcon: ({ tintColor }) =>
           (
             <Icon name="home" size={18} color={tintColor} />
           )
@@ -118,7 +143,7 @@ const TabNavigator = createBottomTabNavigator({
     }, {
       navigationOptions: {
         title: "News Feed",
-        tabBarIcon: ({tintColor}) => (
+        tabBarIcon: ({ tintColor }) => (
           <Icon name="rss" size={18} color={tintColor} />
         )
       }
@@ -132,7 +157,7 @@ const TabNavigator = createBottomTabNavigator({
     }, {
       navigationOptions: {
         title: "Settings",
-        tabBarIcon: ({tintColor}) => (
+        tabBarIcon: ({ tintColor }) => (
           <Icon name="cog" size={18} color={tintColor} />
         )
       }
@@ -157,6 +182,7 @@ const TabNavigator = createBottomTabNavigator({
 
 const stackNav = createStackNavigator({
   Home: {
+    // screen: materialBottomTabNav,
     screen: TabNavigator,
     navigationOptions: {
       headerShown: false,
